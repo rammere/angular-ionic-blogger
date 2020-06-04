@@ -13,9 +13,6 @@ import {Blog} from "./models/blog";
 import {BlogContainerModule } from "./containers/container.module";
 //services
 
-import {BlogTable } from "src/providers/db/tables/blog.table";
-
-//routes
 
 @NgModule({
   imports: [
@@ -26,7 +23,7 @@ import {BlogTable } from "src/providers/db/tables/blog.table";
   ],
   //
   exports: [BlogContainerModule],
-  providers: [Blog,BlogTable]
+  providers: [Blog]
   //
 })
 export class BlogModule { }

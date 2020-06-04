@@ -9,6 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlogModule } from './blog/blog.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers ,metaReducers} from './reducers';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +19,8 @@ import { BlogModule } from './blog/blog.module';
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
     AppRoutingModule,
     BlogModule
   ],

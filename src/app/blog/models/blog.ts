@@ -37,9 +37,6 @@ export interface IBlogRemote{
    
      likes:number
        
-         
-            // instead of client_id for server purpose
-            client_id: number
 }
 
 export interface IBlog{
@@ -64,75 +61,7 @@ export interface IBlog{
    
 }
 
-export const BlogOdooFields =[
- 
-   
-       
-          'id,'
-         
-
-
-           
-   
-       
-          'name,'
-         
-
-
-           
-   
-       
-          'description,'
-         
-
-
-           
-   
-       
-          'userId,'
-         
-
-
-           
-   
-       
-          'createdAt,'
-         
-
-
-           
-   
-       
-          'avatar,'
-         
-
-
-           
-   
-       
-          'blogImage,'
-         
-
-
-           
-   
-       
-          'tags,'
-         
-
-
-           
-   
-      'likes'
-     
-       
-
-
-           
-]
-
-@Injectable()
-export class Blog implements IBlog
+@Injectable() export class Blog implements IBlog
   {
      
   public id:number

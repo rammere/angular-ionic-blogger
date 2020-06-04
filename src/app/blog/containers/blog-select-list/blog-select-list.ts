@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import {BlogOdooFields} from "../../models/blog";
 import { IBlog} from "../../models/blog";
 import {  NavParams, ModalController } from "@ionic/angular";
 import * as fromBlogStore from "../../store/state";
@@ -43,7 +42,7 @@ export class BlogSelectListComponent implements OnInit {
 
   ngOnInit() {
     this.blogs$ = this.blogStore.select<any>(fromBlogSelectors.selectAllData);
-    this.blogStore.dispatch(new fromBlogActions.LoadHTTP({ domain: [], limit: 10, offset: 0, fields:BlogOdooFields }));
+    this.blogStore.dispatch(new fromBlogActions.LoadHTTP({ domain: [], limit: 10, offset: 0}));
 }
 
 
@@ -69,7 +68,7 @@ setFilteredItems() {
 
 doRefresh(event) {
 
-  this.blogStore.dispatch(new fromBlogActions.LoadHTTP({ domain: [], limit: 10, offset: 0, fields:BlogOdooFields }));
+  this.blogStore.dispatch(new fromBlogActions.LoadHTTP({ domain: [], limit: 10, offset: 0}));
 
 setTimeout(() => {
   console.log('Async operation has ended');
