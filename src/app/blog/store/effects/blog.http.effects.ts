@@ -7,11 +7,13 @@ import * as BlogActions from "../actions/";
 
 import { map, switchMap, catchError } from "rxjs/operators";
 import { IBlog} from "../../models/blog";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const modelName = 'blog'
 @Injectable()
 export class BlogHTTPEffects {
-  constructor(private actions$: Actions) { }
+  constructor(private actions$: Actions, private httpClient:HttpClient,
+    ) { }
 
   @Effect()
   addHTTP$ = this.actions$.pipe(
@@ -38,7 +40,17 @@ export class BlogHTTPEffects {
 loadHTTP$ = this.actions$.pipe(
   ofType(BlogActions.BlogHTTPActionsType.LOAD_HTTP),
   switchMap((blogAction:BlogActions.LoadHTTP) => {
-    return of([])
+       return this.httpClient
+      .get("https://5ed89e234378690016c6a276.mockapi.io/api/blogs")
+      .pipe(
+map((data: IBlog[]) => {
+        return new BlogActions.LoadHTTPSuccess(data);
+}),
+  catchError(error =>
+    of(new BlogActions.LoadHTTPFail(error))
+  )
+        );
+
 //   return this.odooAPI.loadRecords(modelName,blogAction.payload.domain,
 //    blogAction.payload.offset,blogAction.payload.limit,blogAction.payload.fields)
 //     .pipe(

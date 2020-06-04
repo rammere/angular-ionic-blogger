@@ -42,10 +42,8 @@ export class BlogListComponent implements OnInit {
     // privateblogActions:BlogActions,
     private blogStore: Store <fromBlogStore.BlogState >,
     private modalCtrl: ModalController,
-    private navParams: NavParams,
 
   ) {
-    this.navData = this.navParams.get('modelData');
     this.initSearch()
   }
 

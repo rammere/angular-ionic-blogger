@@ -12,6 +12,10 @@ import { BlogModule } from './blog/blog.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers ,metaReducers} from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,8 +24,13 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule, 
     IonicModule.forRoot(), 
     StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 200, // Retains last 200 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    }),
     EffectsModule.forRoot([]),
     AppRoutingModule,
+    HttpClientModule,
     BlogModule
   ],
   providers: [
