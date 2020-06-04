@@ -1,0 +1,172 @@
+<!--  Hold Order Detail -->
+<form [formGroup]="formGroup"  novalidate>
+  <ion-list>
+   
+   
+    <ion-item>
+      <ion-label>
+       id
+      </ion-label>
+     
+      <!--  pattern added for iOS compatibilty -->
+      <ion-input text-right type="number" pattern="[0-9]*"
+        formControlName="id"></ion-input>
+     
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       name
+      </ion-label>
+     
+     
+
+      <ion-input text-right type="text"
+        formControlName="name"></ion-input>
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       description
+      </ion-label>
+     
+     
+
+      <ion-input text-right type="text"
+        formControlName="description"></ion-input>
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       comment_id
+      </ion-label>
+     
+      <!--  pattern added for iOS compatibilty -->
+      <ion-input text-right type="number" pattern="[0-9]*"
+        formControlName="comment_id"></ion-input>
+     
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       user_id
+      </ion-label>
+     
+      <!--  pattern added for iOS compatibilty -->
+      <ion-input text-right type="number" pattern="[0-9]*"
+        formControlName="user_id"></ion-input>
+     
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       blog_datetime
+      </ion-label>
+     
+     
+     
+        <ion-datetime formControlName="blog_datetime" displayFormat="DD/MM/YYYY H:mm" min="1920"
+          max="2200">
+        </ion-datetime>
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       avatar
+      </ion-label>
+     
+     
+
+      <ion-input text-right type="text"
+        formControlName="avatar"></ion-input>
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       blogImage
+      </ion-label>
+     
+     
+
+      <ion-input text-right type="text"
+        formControlName="blogImage"></ion-input>
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       likes
+      </ion-label>
+     
+      <!--  pattern added for iOS compatibilty -->
+      <ion-input text-right type="number" pattern="[0-9]*"
+        formControlName="likes"></ion-input>
+     
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       userId
+      </ion-label>
+     
+      <!--  pattern added for iOS compatibilty -->
+      <ion-input text-right type="number" pattern="[0-9]*"
+        formControlName="userId"></ion-input>
+     
+     
+     
+    </ion-item>
+   
+   
+   
+    <ion-item>
+      <ion-label>
+       createdAt
+      </ion-label>
+     
+     
+
+      <ion-input text-right type="text"
+        formControlName="createdAt"></ion-input>
+     
+     
+    </ion-item>
+   
+   
+  </ion-list>
+</form>
+<ion-button [disabled]="!formGroup.valid" block tappable (click)="submitForm()">Save</ion-button>
