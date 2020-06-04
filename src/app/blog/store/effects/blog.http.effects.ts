@@ -20,47 +20,48 @@ export class BlogHTTPEffects {
     ofType(BlogActions.BlogHTTPActionsType.ADD_HTTP),
     pipe(
       switchMap((action: any) => {
-        return of ([])
-//         return this.odooAPI.addRecord(action.payload.data, modelName).pipe(
-//           switchMap((blogId: any) => {
-//           return of(new BlogActions.AddUpdateHTTPSuccess(
-//             //blog
-//             {data:Object.assign(action.payload, { id:blogId })}
-//             ));
-// }),
-// catchError(error =>
-//   of(new BlogActions.AddUpdateHTTPFail(error))
-// )
-//         );
+        // TODO for testing 
+        return this.httpClient.post("https://5ed89e234378690016c6a276.mockapi.io/api/blogs", { data: action.payload.data })
+          .pipe(
+
+            map((data: IBlog) => {
+              return new BlogActions.AddUpdateHTTPSuccess({data:action.payload.data});
+            }),
+            catchError(error =>
+              of(new BlogActions.AddUpdateHTTPFail(error))
+            )
+
+          )
+
       })))
 
 
 
-@Effect()
-loadHTTP$ = this.actions$.pipe(
-  ofType(BlogActions.BlogHTTPActionsType.LOAD_HTTP),
-  switchMap((blogAction:BlogActions.LoadHTTP) => {
-       return this.httpClient
-      .get("https://5ed89e234378690016c6a276.mockapi.io/api/blogs")
-      .pipe(
-map((data: IBlog[]) => {
-        return new BlogActions.LoadHTTPSuccess(data);
-}),
-  catchError(error =>
-    of(new BlogActions.LoadHTTPFail(error))
-  )
+  @Effect()
+  loadHTTP$ = this.actions$.pipe(
+    ofType(BlogActions.BlogHTTPActionsType.LOAD_HTTP),
+    switchMap((blogAction: BlogActions.LoadHTTP) => {
+      return this.httpClient
+        .get("https://5ed89e234378690016c6a276.mockapi.io/api/blogs")
+        .pipe(
+          map((data: IBlog[]) => {
+            return new BlogActions.LoadHTTPSuccess(data);
+          }),
+          catchError(error =>
+            of(new BlogActions.LoadHTTPFail(error))
+          )
         );
 
-//   return this.odooAPI.loadRecords(modelName,blogAction.payload.domain,
-//    blogAction.payload.offset,blogAction.payload.limit,blogAction.payload.fields)
-//     .pipe(
-//       map((data: IBlog[]) => {
-//         return new BlogActions.LoadHTTPSuccess(data);
-// }),
-//   catchError(error =>
-//     of(new BlogActions.LoadHTTPFail(error))
-//   )
-//         );
+      //   return this.odooAPI.loadRecords(modelName,blogAction.payload.domain,
+      //    blogAction.payload.offset,blogAction.payload.limit,blogAction.payload.fields)
+      //     .pipe(
+      //       map((data: IBlog[]) => {
+      //         return new BlogActions.LoadHTTPSuccess(data);
+      // }),
+      //   catchError(error =>
+      //     of(new BlogActions.LoadHTTPFail(error))
+      //   )
+      //         );
     })
   );
 
@@ -68,17 +69,17 @@ map((data: IBlog[]) => {
   refreshHTTP$ = this.actions$.pipe(
     ofType(BlogActions.BlogHTTPActionsType.REFRESH_HTTP),
     switchMap((blogAction: BlogActions.RefreshHTTP) => {
-      return of ([])
-    //   return this.odooAPI.loadRecords(modelName, blogAction.payload.domain,
-    //     blogAction.payload.offset, blogAction.payload.limit, blogAction.payload.fields)
-    //     .pipe(
-    //       map((data: IBlog[]) => {
-    //         return new BlogActions.RefreshHTTPSuccess(data);
-    //       }),
-    //       catchError(error =>
-    //         of(new BlogActions.RefreshHTTPFail(error))
-    //       )
-    //     );
+      return of([])
+      //   return this.odooAPI.loadRecords(modelName, blogAction.payload.domain,
+      //     blogAction.payload.offset, blogAction.payload.limit, blogAction.payload.fields)
+      //     .pipe(
+      //       map((data: IBlog[]) => {
+      //         return new BlogActions.RefreshHTTPSuccess(data);
+      //       }),
+      //       catchError(error =>
+      //         of(new BlogActions.RefreshHTTPFail(error))
+      //       )
+      //     );
     })
   );
 
@@ -113,7 +114,7 @@ map((data: IBlog[]) => {
       //       of(new BlogActions.DeleteHTTPFail(error))
       //     )
       //   );
-      return of ([])
+      return of([])
     })
   )
 

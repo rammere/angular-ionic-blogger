@@ -38,6 +38,7 @@ export class BlogDetailComponent implements OnInit {
   if (!this.valid) return;
   if (!this.blog.id) {
     // so it is new add
+    this.blog.id=48
     this.store.dispatch(new fromBlogActions.AddHTTP({data:this.blog}));
   } else {
     //just update

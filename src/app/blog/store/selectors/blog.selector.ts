@@ -51,6 +51,11 @@ export const selectIDByServerID = server_id =>
     data => data.filter((record: any) => record.server_id == server_id)[0].id
   );
 
+  export const selectAllDataSortedByIdAsc=
+  createSelector(
+    selectAllData,
+    data => data.sort(function(a,b){return b.id -a.id})
+  );
 export const selectByServerId = server_id =>
   createSelector(
     selectAllData,

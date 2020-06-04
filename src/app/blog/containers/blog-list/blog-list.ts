@@ -48,7 +48,7 @@ export class BlogListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.blogs$ = this.blogStore.select<any>(fromBlogSelectors.selectAllData);
+    this.blogs$ = this.blogStore.select<any>(fromBlogSelectors.selectAllDataSortedByIdAsc);
     this.blogStore.dispatch(new fromBlogActions.LoadHTTP({ domain: [], limit: 10, offset: 0 }));
 }
 
